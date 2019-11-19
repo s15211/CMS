@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class ArticleController
+class ArticleController extends AbstractController
 {
     /**
      * @Route("/")
@@ -20,9 +21,8 @@ class ArticleController
      */
     public function article($id)
     {
-        return new Response(sprintf(
-            'Articles : %s',
-            $id
-        ));
+        return $this->render('article/show.html.twig', [
+        'tittle' => ucwords(str_replace('-',' ',$id)),
+    ]);
     }
 }
