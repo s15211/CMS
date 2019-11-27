@@ -13,7 +13,7 @@ class ArticleController extends AbstractController
      */
     public function homepage()
     {
-        return  new Response('homepage');
+        return  $this->render('base.html.twig');
     }
 
     /**
@@ -21,6 +21,7 @@ class ArticleController extends AbstractController
      */
     public function article($id)
     {
+        //dump($this);
         return $this->render('article/show.html.twig', [
         'tittle' => ucwords(str_replace('-',' ',$id)),
     ]);
