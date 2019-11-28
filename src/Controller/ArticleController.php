@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="app_homepage")
      */
     public function homepage(\Swift_Mailer $mailer)
     {
@@ -24,15 +24,15 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/contact")
+     * @Route("/login", name="app_login")
      */
-    public function contact()
+    public function login()
     {
-        return  $this->render('article/contact.html.twig.html.twig');
+        return  $this->render('article/login.html.twig');
     }
 
     /**
-     * @Route("/article/{id}")
+     * @Route("/article/{id}", name="app_article")
      */
     public function article($id)
     {
