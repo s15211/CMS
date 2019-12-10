@@ -1,0 +1,64 @@
+﻿{% extends'base.html.twig' %}
+
+{% block head %}
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="css/sourcesanspro-font.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="css/style.css"/>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+    {{ car.model }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ car.mark }} {{ car.model }}</h1>
+    <table>
+        <tbody>
+            <tr>
+                <td>Image</td>
+                <td>{{ car.image }}</td>
+            </tr>
+            <tr>
+                <td>Year</td>
+                <td>{{ car.year }}</td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td>{{ car.price }} zł</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ car.description }}</td>  
+            </tr>
+            <tr>
+                <th>Fuel</th>
+                <td>{{ car.fuel }}</td>  
+            </tr>
+            <tr>
+                <th>Places</th>
+                <td>{{ car.places }}</td>  
+            </tr>
+            <tr>
+                <th>Mark</th>
+                <td>{{ car.mark }}</td>  
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{{ car.model }}</td>  
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('cars') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('carEdit', { 'id': car.id }) }}">Edit</a>
+        </li>
+        <li>
+            <input type="submit" value="Delete">
+        </li>
+    </ul>
+{% endblock %}
