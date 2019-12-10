@@ -1,9 +1,9 @@
 {% extends'base.html.twig' %}
 
 {% block head %}
-	<!-- Font-->
-	<link rel="stylesheet" type="text/css" href="css/sourcesanspro-font.css">
-	<!-- Main Style Css -->
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="css/sourcesanspro-font.css">
+    <!-- Main Style Css -->
     <link rel="stylesheet" href="css/style.css"/>
 {% endblock %}
 
@@ -14,21 +14,19 @@
 
 {% block body %}
     <h1>Car list</h1>
-	<div>
-		<button type="submit" class="btn">Search</button>
-		<br>
-	</div>
+    <button type="submit">Search</button>
+    <br>
     <table>
         <thead>
             <tr>
                 <th>Id</th>
-				<th>Image</th>
+		<th>Image</th>
                 <th>Price</th>
                 <th>Year</th>
                 <th>Description</th>
-				<th>Fuel</th>
+		<th>Fuel</th>
                 <th>Places</th>
-				<th>Mark</th>
+		<th>Mark</th>
                 <th>Model</th>
             </tr>
         </thead>
@@ -40,9 +38,9 @@
                 <td>{{ car.price }}</td>
                 <td>{{ car.year }}</td>
                 <td>{{ car.description }}</td>
-				<td>{{ car.fuel }}</td>
+		<td>{{ car.fuel }}</td>
                 <td>{{ car.places }}</td>
-				<td>{{ car.mark }}</td>
+		<td>{{ car.mark }}</td>
                 <td>{{ car.model }}</td>
                 <td>
                     <ul>
@@ -58,10 +56,9 @@
         {% endfor %}
         </tbody>
     </table>
-
     <ul>
         <li>
-            <a href="{{ path('car-new') }}">Create a new entry</a>
+            <a href="{{ path('car-new') }}">Create a new Car</a>
         </li>
     </ul>
 {% endblock %}
