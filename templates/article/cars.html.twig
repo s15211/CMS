@@ -1,0 +1,67 @@
+{% extends'base.html.twig' %}
+
+{% block head %}
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="css/sourcesanspro-font.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="css/style.css"/>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }}
+    The best cars for CMS!
+{% endblock %}
+
+{% block body %}
+    <h1>Car list</h1>
+	<div>
+		<button type="submit" class="btn">Search</button>
+		<br>
+	</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+				<th>Image</th>
+                <th>Price</th>
+                <th>Year</th>
+                <th>Description</th>
+				<th>Fuel</th>
+                <th>Places</th>
+				<th>Mark</th>
+                <th>Model</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for car in cars %}
+            <tr>
+                <td><a href="{{ path('car-show', { 'id': car.id }) }}">{{ car.id }}</a></td>
+                <td>{{ car.image }}</td>
+                <td>{{ car.price }}</td>
+                <td>{{ car.year }}</td>
+                <td>{{ car.description }}</td>
+				<td>{{ car.fuel }}</td>
+                <td>{{ car.places }}</td>
+				<td>{{ car.mark }}</td>
+                <td>{{ car.model }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('car-show', { 'id': car.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('car-edit', { 'id': car.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('car-new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
