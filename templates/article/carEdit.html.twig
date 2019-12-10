@@ -1,0 +1,21 @@
+{% extends'base.html.twig' %}
+
+{% block head %}
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="css/sourcesanspro-font.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="css/style.css"/>
+{% endblock %}
+
+{% block body %}
+    <h1>Car Edit</h1>
+    <input type="submit" value="Edit" />
+    <ul>
+        <li>
+            <a href="{{ path('cars') }}">Back to the list of Cars</a>
+        </li>
+        <li>
+            <input type="submit" value="Delete">
+        </li>
+    </ul>
+{% endblock %}
