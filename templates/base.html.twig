@@ -27,8 +27,11 @@
             <li>Give us a call : +66666666 </li>
         </ul>
         <ul class="logreg">
-            <li><a href="{{ path('app_login') }}">Login / Register </a> </li>
-            <!--<<li><a href="#"><span class="register">Register</span></a></li>-->
+            {% if is_granted('ROLE_USER') %}
+                <li><a href="{{ path('app_homepage') }}"> Hello again, {{ last_username }} </a> </li>
+            {% else %}
+                <li><a href="{{ path('app_login') }}">Login / Register </a> </li>
+            {% endif %}
         </ul>
     </div>
     <!-- Navbar Up -->
@@ -67,7 +70,9 @@
                     <a href="#">CONTACT</a>
 
                 </li>
+                {% if is_granted('ROLE_USER') %}
                 <button><span class="postnewcar">POST NEW CAR</span></button>
+                {% endif %}
             </ul>
         </div>
     </nav>

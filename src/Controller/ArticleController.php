@@ -13,6 +13,17 @@ class ArticleController extends AbstractController
      */
     public function homepage(\Swift_Mailer $mailer)
     {
+        $user = $this->getUser();
+        if($user)
+        {
+            $last_username = $user->getUsername();
+            $email = $user->GetEmail();
+        }
+        else
+        {
+            $last_username = null;
+            $email = null;
+        }
         $marks = $this->askApi('marks');
         $body = $this->askApi('body_types');
         $engine = $this->askApi('engine_sizes');
@@ -26,16 +37,10 @@ class ArticleController extends AbstractController
         return  $this->render('article/index.html.twig',[
             'marks' => $marks,
             'bodies' => $body,
-            'engines' => $engine
+            'engines' => $engine,
+            'last_username' => $last_username,
+            'email' => $email,
         ]);
-    }
-
-    /**
-     * @Route("/login", name="app_login")
-     */
-    public function login()
-    {
-        return  $this->render('article/login.html.twig');
     }
 
     /**
@@ -47,6 +52,14 @@ class ArticleController extends AbstractController
         return $this->render('article/show.html.twig', [
         'tittle' => ucwords(str_replace('-',' ',$id)),
     ]);
+    }
+
+    /**
+     * @Route("/admin", name="app_admin")
+     */
+    public function admin(\Swift_Mailer $mailer)
+    {
+        return $this->json['ok'];
     }
 
     public function askApi($table)

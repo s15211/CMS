@@ -404,7 +404,7 @@
 		</div>
 		<div class="rightside">
 			<img class="newsimage" src="image/newsletter.jpg" alt="newsletter">
-			<input type="text" class="form-control" id="subemail" placeholder="EMAIL">
+			<input type="text" class="form-control" id="subemail" placeholder="EMAIL" {% if is_granted('ROLE_USER') %} value="{{ email }}" {% endif %}>
 			<button>SUBSCRIBE</button>
 		</div>
 	</div>
