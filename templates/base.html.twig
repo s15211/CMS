@@ -29,7 +29,7 @@
         <ul class="logreg">
             {% if is_granted('ROLE_USER') %}
                 <li><a href="{{ path('app_homepage') }}"> Hello again, {{ last_username }} </a></li>
-                <li><a href="{{ path('app_logout') }}"> Logout </a></li>
+                <li><a href="{{ path('app_logout') }}">| Logout </a></li>
             {% else %}
                 <li><a href="{{ path('app_login') }}">Login / Register </a> </li>
             {% endif %}
@@ -52,7 +52,7 @@
             <ul class="nav navbar-nav" id="navbarontop">
                 <li class="active"><a href="{{ path('app_homepage') }}">HOME</a> </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle"	data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle"	data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MARKS <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdowncostume">
                         <li><a href="#">Sport</a></li>
                         <li><a href="#">Old</a></li>
@@ -60,7 +60,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DEALERS <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BODY TYPES <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdowncostume">
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
@@ -72,7 +72,10 @@
 
                 </li>
                 {% if is_granted('ROLE_USER') %}
-                <button><span class="postnewcar">POST NEW CAR</span></button>
+                    <button><a href="#"><span class="postnewcar">POST NEW CAR</span></a></button>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <button><a href="{{ path('app_admin') }}"><span class="postnewcar">ADMIN PANEL</span></a></button>
                 {% endif %}
             </ul>
         </div>
