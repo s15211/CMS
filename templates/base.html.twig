@@ -28,7 +28,8 @@
         </ul>
         <ul class="logreg">
             {% if is_granted('ROLE_USER') %}
-                <li><a href="{{ path('app_homepage') }}"> Hello again, {{ last_username }} </a> </li>
+                <li><a href="{{ path('app_homepage') }}"> Hello again, {{ last_username }} </a></li>
+                <li><a href="{{ path('app_logout') }}"> Logout </a></li>
             {% else %}
                 <li><a href="{{ path('app_login') }}">Login / Register </a> </li>
             {% endif %}
@@ -83,15 +84,8 @@
         <div class="bottomlogo">
             <span class="dotlogo">&bullet;</span><img src="image/collectionlogo1.png" alt="logo1"><span class="dotlogo">&bullet;;</span>
         </div>
-        <ul class="nav nav-tabs bottomlinks">
-            <li role="presentation" ><a href="#/" role="button">ABOUT US</a></li>
-            <li role="presentation"><a href="#/">CATEGORIES</a></li>
-            <li role="presentation"><a href="#/">PREORDERS</a></li>
-            <li role="presentation"><a href="#/">CONTACT US</a></li>
-            <li role="presentation"><a href="#/">RECEIVE OUR NEWSLETTER</a></li>
-        </ul>
-        <p>"Lorem ipsum dolor sit amet, consectetur,  sed do eiusmod tempor incididunt <br>
-            eiusmod tempor incididunt </p>
+        <p>Your dream . . .<br>
+            Your CAR !</p>
         <img src="image/line.png" alt="line"> <br>
         <div class="bottomsocial">
             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -101,10 +95,10 @@
         </div>
         <div class="footer">
             <div class="copyright">
-                &copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
+                &copy; Copy right 2020 | <a href="#">Privacy </a>| <a href="#">Policy</a>
             </div>
             <div class="atisda">
-                Designed by <a href="http://www.webdomus.net/">Web Domus Italia - Web Agency </a>
+                Designed by Symfony Dev - GRUPA CMS </a>
             </div>
         </div>
     </div>

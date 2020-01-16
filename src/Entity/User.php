@@ -44,6 +44,11 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Newsletter", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $newsletter;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -161,6 +166,24 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getNewsletter(): ?Newsletter
+    {
+        return $this->newsletter;
+    }
+
+    public function setNewsletter(?Newsletter $newsletter): self
+    {
+        $this->newsletter = $newsletter;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = null === $newsletter ? null : $this;
+        if ($newsletter->getUser() !== $newUser) {
+            $newsletter->setUser($newUser);
+        }
 
         return $this;
     }

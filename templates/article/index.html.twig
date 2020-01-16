@@ -1,8 +1,18 @@
 {% extends'base.html.twig' %}
 
 {% block content %}
+
 <!--_______________________________________ Carousel__________________________________ -->
 <div class="allcontain">
+	{% for message in app.flashes('success') %}
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
 	<div id="carousel-up" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner " role="listbox">
 			<div class="item active">
@@ -393,6 +403,7 @@
 			</div>	
 		</div>
 	</div>
+	{% if news is empty %}
 <!-- _______________________________News Letter ____________________-->
 	<div class="newslettercontent">
 		<div class="leftside">
@@ -402,10 +413,20 @@
 				receive updates on new arrivals, special offers <br>
 				and other discount information.</p>
 		</div>
+		{{ form_start(newsForm) }}
 		<div class="rightside">
 			<img class="newsimage" src="image/newsletter.jpg" alt="newsletter">
-			<input type="text" class="form-control" id="subemail" placeholder="EMAIL" {% if is_granted('ROLE_USER') %} value="{{ email }}" {% endif %}>
-			<button>SUBSCRIBE</button>
+			{{ form_widget(newsForm.email,
+				{	'attr' :
+					{
+					'class' : 'form-control',
+					'id' : 'subemail',
+					'placeholder' : 'EMAIL'
+					}
+				}) }}
+			<button type="submit">SUBSCRIBE</button>
 		</div>
+		{{ form_end(newsForm) }}
 	</div>
+	{% endif %}
 	{% endblock %}

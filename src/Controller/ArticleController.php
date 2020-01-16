@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Newsletter;
+use App\Form\NewsletterFormType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -11,7 +15,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/", name="app_homepage")
      */
-    public function homepage(\Swift_Mailer $mailer)
+    public function homepage(Request $request, EntityManagerInterface $em)
     {
         $user = $this->getUser();
         if($user)
@@ -24,22 +28,44 @@ class ArticleController extends AbstractController
             $last_username = null;
             $email = null;
         }
+        if($user && $user->getNewsletter())
+        {
+            $news = $user->getNewsletter();
+        }
+        else
+        {
+            $news = null;
+        }
+
+        $form = $this->createForm(NewsletterFormType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $data = $form->getData();
+            $newletter = new Newsletter();
+            $newletter->setEmail($data['email']);
+            if($data['email'] == $email)
+            {
+                $newletter->setUser($user);
+            }
+            $em->persist($newletter);
+            $em->flush();
+
+            $this->addFlash('success','Email signed up !');
+        }
+
         $marks = $this->askApi('marks');
         $body = $this->askApi('body_types');
         $engine = $this->askApi('engine_sizes');
-        /*
-        $message = (new \Swift_Message('Aktywuj konto!'))
-            ->setFrom('driven3twork@gmail.com')
-            ->setTo('s15211@pjwstk.edu.pl')
-            ->setBody('Kod aktywacji konta to : xxxxxxx');
-        $mailer->send($message);
-        */
+
         return  $this->render('article/index.html.twig',[
             'marks' => $marks,
             'bodies' => $body,
             'engines' => $engine,
             'last_username' => $last_username,
             'email' => $email,
+            'news' => $news,
+            'newsForm' => $form->createView(),
         ]);
     }
 
@@ -48,18 +74,9 @@ class ArticleController extends AbstractController
      */
     public function article($id)
     {
-        //dump($this);
         return $this->render('article/show.html.twig', [
         'tittle' => ucwords(str_replace('-',' ',$id)),
     ]);
-    }
-
-    /**
-     * @Route("/admin", name="app_admin")
-     */
-    public function admin(\Swift_Mailer $mailer)
-    {
-        return $this->json['ok'];
     }
 
     public function askApi($table)
