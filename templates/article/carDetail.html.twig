@@ -1,0 +1,65 @@
+{% extends'base.html.twig' %}
+
+{% block head %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="wrapper">
+            <div class="logo">
+                <h1>
+                    <a href="/">{{ logo here }}</a>
+                </h1>
+            </div>
+            <div class="nav">
+                <div class="navigation__element"><a href="list.html">{{ List }}</a></div>
+                <div class="navigation__element"><a href="">{{ link 2 }}</a></div>
+                <div class="navigation__element"><a href="">{{ link 3 }}</a></div>
+                <div class="navigation__element"><a href="">{{ link 4 }}</a></div>
+                <div class="navigation__element"><a href="">{{ link 5 }}</a></div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="wrapper columns">
+            <div class="main">
+                <div class="main__detail-wrapper">
+                    <h1 class="detail__header">{{ BMW X2 xDrive25e. Kolejna hybryda plug-in dołącza do oferty }}</h1>
+                    <div class="detail__meta">
+                        <div class="detail__author">
+                            {{ Artur Shkred }}
+                        </div>
+                        <div class="detail__date">
+                            {{ 01.01.2020 10:16 }}
+                        </div>
+                    </div>
+                    <div class="detail__lead">
+                        {{ BMW X2 xDrive25e korzysta z tego samego napędu, co X1 o identycznym oznaczeniu. Mówimy więc o hybrydzie ładowanej z gniazdka o łącznej mocy 220 KM, która na samym prądzie ma przejechać nawet 57 km. }}
+                    </div>
+                    <div class="detail__image">
+                        <img src={{ "https://bi.im-g.pl/im/b3/65/18/z25582515IH,BMW-X2-xDrive25e.jpg" }}alt="auto">
+                    </div>
+                    <div class="detail__text">
+                        <p class="detail__paragraph">{{ Napęd BMW X2 xDrive25e znamy już z odświeżonego X1. Współpracują w nim ze sobą dwa silniki: benzynowe 1.5 o mocy 125 KM (220 Nm) oraz umieszczony z tyłu, napędzający koła swojej osi motor elektryczny o mocy 95 KM (165 Nm). Hybrydowe X2 ma więc napęd na cztery koła, o czym świadczy xDrive w nazwie. Łączna moc układu to 220 KM, a maksymalny moment obrotowy wynosi 385 Nm. Osiągi? Pierwsza setka na liczniku w 6,8 s oraz 195 km/h prędkości maksymalnej. X2 może się pochwalić odrobinę lepszymi liczbami niż bratnie X1 - dokładnie o 0,1 s i 2 km/h. }}</p>
+                        <p class="detail__paragraph">{{ Pojemność akumulatora to 10 kWh. W trybie czysto elektrycznym BMW X2 xDrive25e ma przejechać około 57 km. Deklarowane średnie zużycie benzyny to 1,9 l/100 km, a emisja - 43 g CO2/km. Podane dane BMW zmierzyło oczywiście zgodnie z normą WLTP. Ładowanie z domowego gniazdka ma potrwać około 5 godzin, a przy użyciu Wallboxa BMW spaść do 3 godzin.}} </p>
+                        <p class="detail__paragraph">{{ Nie znamy jeszcze szczegółów polskiej oferty. Nad Wisłę nie przyjechało również BMW X1 xDrive25e, więc nie możemy wam podać nawet orientacyjnej ceny. Rynkowa premiera hybrydowego X1 planowana jest na marzec 2020, a przynajmniej taką informację znaleźliśmy na oficjalnej stronie polskiego BMW. Oficjalny cennik powinien pojawić się już niedługo.}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <h1 class="main__header">{{ Right header column }}</h1>
+                <div class="right-column__element">{{ right element 1 }}</div>
+                <div class="right-column__element">{{ right element 2 }}</div>
+                <div class="right-column__element">{{ right element 3 }}</div>
+                <div class="right-column__element">{{ right element 4 }}</div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="wrapper">
+            <h1>{{ footer }}</h1>
+        </div>
+    </footer>
+</body>
+{% endblock %}
