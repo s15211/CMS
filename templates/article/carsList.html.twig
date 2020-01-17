@@ -10,7 +10,7 @@
         <div class="wrapper">
             <div class="logo">
                 <h1>
-                    <a href="/">{{ logo here }}</a>
+                    <a href="/">{{ logo }}</a>
                 </h1>
             </div>
             <div class="nav">
@@ -25,93 +25,32 @@
     <section>
         <div class="wrapper columns">
             <div class="main">
-                <h1 class="main__header">{{ Samochody header }}</h1>
+                <h1 class="main__header">{{ header }}</h1>
                 <div class="main__articles-wrapper">
                     <ul class="main__articles-list">
-                        <li class="main__articles-item">
-                            <div class="main__single-article">
-                                <a href="detail.html" class="article__link"> <img src={{ "https://bi.im-g.pl/im/33/44/18/z25445683II,Tesla-Cybertruck.jpg" }} alt=""></a>
-                                <article class="article">
-                                    <h2 class="article__title">
-                                        {{ Cool title }}
-                                    </h2>
-                                    <p class="article__lead">
-                                        {{ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget lacus diam. Nam nec velit ultrices risus viverra commodo. Praesent egestas, nunc eu malesuada malesuada, leo nulla tincidunt ex, sed tempus nibh ipsum id purus. Nulla urna tortor, efficitur a ante sit amet, tincidunt pulvinar erat. Donec in scelerisque risus. Cras tempus tempus arcu, at scelerisque mauris mattis id. }}
-                                    </p>
-                                    <div class="artile__meta">
-                                        <div class="article__author">
-                                           {{ Artur Shkred }}
-                                        </div>
-                                        <div class="article__date">
-                                            {{ 01.01.2020 }}
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </li>
-                        <li class="main__articles-item">
-                            <div class="main__single-article">
-                                <a href="detail.html" class="article__link"> <img src= {{ "https://bi.im-g.pl/im/33/44/18/z25445683II,Tesla-Cybertruck.jpg" }} alt=""></a>
-                                <article class="article">
-                                    <h2 class="article__title">
-                                        {{ Cool title }}
-                                    </h2>
-                                    <p class="article__lead">
-                                        {{ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget lacus diam. Nam nec velit ultrices risus viverra commodo. Praesent egestas, nunc eu malesuada malesuada, leo nulla tincidunt ex, sed tempus nibh ipsum id purus. Nulla urna tortor, efficitur a ante sit amet, tincidunt pulvinar erat. Donec in scelerisque risus. Cras tempus tempus arcu, at scelerisque mauris mattis id. }}
-                                    </p>
-                                    <div class="artile__meta">
-                                        <div class="article__author">
-                                            {{ Artur Shkred }}
-                                        </div>
-                                        <div class="article__date">
-                                           {{ 01.01.2020 }}
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </li>
-                        <li class="main__articles-item">
-                            <div class="main__single-article">
-                                <a href="detail.html" class="article__link"> <img src={{ "https://bi.im-g.pl/im/33/44/18/z25445683II,Tesla-Cybertruck.jpg" }} alt=""></a>
-                                <article class="article">
-                                    <h2 class="article__title">
-                                       {{ Cool title }}
-                                    </h2>
-                                    <p class="article__lead">
-                                       {{ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget lacus diam. Nam nec velit ultrices risus viverra commodo. Praesent egestas, nunc eu malesuada malesuada, leo nulla tincidunt ex, sed tempus nibh ipsum id purus. Nulla urna tortor, efficitur a ante sit amet, tincidunt pulvinar erat. Donec in scelerisque risus. Cras tempus tempus arcu, at scelerisque mauris mattis id. }}
-                                    </p>
-                                    <div class="artile__meta">
-                                        <div class="article__author">
-                                            {{ Artur Shkred }}
-                                        </div>
-                                        <div class="article__date">
-                                            {{ 01.01.2020 }}
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </li>
-                        <li class="main__articles-item">
-                            <div class="main__single-article">
-                                <a href="detail.html" class="article__link"> <img src={{ "https://bi.im-g.pl/im/33/44/18/z25445683II,Tesla-Cybertruck.jpg" }} alt=""></a>
-                                <article class="article">
-                                    <h2 class="article__title">
-                                        {{ Cool title }}
-                                    </h2>
-                                    <p class="article__lead">
-                                        {{ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget lacus diam. Nam nec velit ultrices risus viverra commodo. Praesent egestas, nunc eu malesuada malesuada, leo nulla tincidunt ex, sed tempus nibh ipsum id purus. Nulla urna tortor, efficitur a ante sit amet, tincidunt pulvinar erat. Donec in scelerisque risus. Cras tempus tempus arcu, at scelerisque mauris mattis id. }}
-                                    </p>
-                                    <div class="artile__meta">
-                                        <div class="article__author">
-                                           {{ Artur Shkred }}
-                                        </div>
-                                        <div class="article__date">
-                                            {{ 01.01.2020 }}
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </li>
+						{% for car in cars %}
+							<li class="main__articles-item">
+								<div class="main__single-article">
+									<a href="detail.html" class="article__link"> <img src={{ car.image }} alt=""></a>
+									<article class="article">
+										<h2 class="article__title">
+											{{ car.title }}
+										</h2>
+										<p class="article__lead">
+											{{ car.lead }}
+										</p>
+										<div class="artile__meta">
+											<div class="article__author">
+											   {{ car.author }}
+											</div>
+											<div class="article__date">
+												{{ car.date }}
+											</div>
+										</div>
+									</article>
+								</div>
+							</li>
+						{% endfor %}
                     </ul>
                 </div>
             <div class="pagination">
@@ -126,11 +65,10 @@
             </div>
             </div>
             <div class="right-column">
-                <h1 class="main__header">{{ Right header column }}</h1>
-                <div class="right-column__element">{{ right element 1 }}</div>
-                <div class="right-column__element">{{ right element 2 }}</div>
-                <div class="right-column__element">{{ right element 3 }}</div>
-                <div class="right-column__element">{{ right element 4 }}</div>
+                <h1 class="main__header">{{ rightHeaderColumn }}</h1>
+				{% for rightElement in carDetail.rightElements %}
+					<div class="right-column__element">{{ rightElement }}</div>
+				{% endfor %}
             </div>
         </div>
     </section>
