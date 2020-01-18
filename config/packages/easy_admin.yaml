@@ -1,0 +1,58 @@
+easy_admin:
+    design:
+        menu:
+            - {label: "Entities"}
+
+            - label: "Users"
+              children:
+                - {entity: User, label: "Users list", icon: "user"}
+                - {entity: User, label: "Add user", icon: "plus", params: {action: 'new'}}
+            - label: "Posts"
+              children:
+                - {entity: Post, label: "Posts list", icon: "th-list"}
+                - {entity: Post, label: "Add post", icon: "plus", params: {action: 'new'}}
+            - label: "Cars"
+              children:
+                - {entity: Car, label: "Cars list", icon: "car"}
+                - {entity: Car, label: "Add car", icon: "plus", params: {action: 'new'}}
+    site_name: 'Admin Panel'
+    user:
+        display_name: true
+        display_avatar: true
+        name_property_path: 'Username'
+    entities:
+        # List the entity class name you want to manage
+        Post:
+          class: App\Entity\Post
+          label: "Post"
+          form:
+            fields:
+            - {type: 'group', icon: 'pencil', label: 'Basic Information', css_class: 'col-lg-8'}
+            - Title
+            - {property: 'content', type: 'text_editor'}
+            - date
+            - {type: 'group', icon: 'th-list', label: 'Other Information', css_class: 'col-lg-4'}
+            - car
+            - user
+          list:
+            collapse_actions: true
+            actions: ['show','edit','delete']
+            batch_actions: ['delete']
+            filters: ['date']
+          show:
+            fields:
+              - Title
+              - {property: 'content', type: 'raw'}
+              - Date
+              - Car
+              - User
+        User:
+          class: App\Entity\User
+          list:
+            collapse_actions: true
+            actions: ['show','edit','delete']
+            batch_actions: ['delete']
+            filters: ['username','email']
+        Car:
+          class: App\Entity\Car
+

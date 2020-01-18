@@ -75,7 +75,7 @@
                     <button><a href="#"><span class="postnewcar">POST NEW CAR</span></a></button>
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <button><a href="{{ path('app_admin') }}"><span class="postnewcar">ADMIN PANEL</span></a></button>
+                    <button><a href="{{ path('easyadmin') }}"><span class="postnewcar">ADMIN PANEL</span></a></button>
                 {% endif %}
             </ul>
         </div>

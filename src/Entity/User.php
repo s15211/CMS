@@ -175,6 +175,11 @@ class User implements UserInterface
         return $this->newsletter;
     }
 
+    public function __toString(): string
+    {
+        return $this->username;
+    }
+
     public function setNewsletter(?Newsletter $newsletter): self
     {
         $this->newsletter = $newsletter;
