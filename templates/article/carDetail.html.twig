@@ -1,0 +1,80 @@
+{% extends'base.html.twig' %}
+
+{#
+Jeśli masz problemy z tym artykułem w postaci twig, możesz zobaczyć kod HTML tutaj: 
+https://github.com/shkredo/CMS
+https://shkredo.github.io/CMS/
+następnym razem opisz bardziej szczegółowo strukturę bazy :)
+#}
+
+{% block head %}
+	<!-- Font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+	<!-- Style Main -->
+	<link rel="stylesheet" href="css/main.css">
+	<!-- Style Detail -->
+	<link rel="stylesheet" href="css/detail.css">
+	<!-- Style Media -->
+	<link rel="stylesheet" href="css/media.css">
+	<!-- Style Reset -->
+	<link rel="stylesheet" href="css/reset.css">
+{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="wrapper">
+            <div class="logo">
+                <h1>
+                    <a href="/">{{ logo here }}</a>
+                </h1>
+            </div>
+            <div class="nav">
+                <div class="navigation__element"><a href="list.html">{{ List }}</a></div>
+                <div class="navigation__element"><a href="">{{ link 2 }}</a></div>
+                <div class="navigation__element"><a href="">{{ link 3 }}</a></div>
+                <div class="navigation__element"><a href="">{{ link 4 }}</a></div>
+                <div class="navigation__element"><a href="">{{ link 5 }}</a></div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="wrapper columns">
+            <div class="main">
+                <div class="main__detail-wrapper">
+                    <h1 class="detail__header">{{ carDetail.header }}</h1>
+                    <div class="detail__meta">
+                        <div class="detail__author">
+                            {{ carDetail.author }}
+                        </div>
+                        <div class="detail__date">
+                            {{ carDetail.date }}
+                        </div>
+                    </div>
+                    <div class="detail__lead">
+                        {{ carDetail.lead }}
+                    </div>
+                    <div class="detail__image">
+                        <img src={{ carDetail.image }}alt="auto">
+                    </div>
+                    <div class="detail__text">
+						{% for paragraph in carDetail.paragraphs %}
+							<p class="detail__paragraph">{{ paragraph }}</p>
+						{% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="right-column">
+                <h1 class="main__header">{{ rightHeaderColumn }}</h1>
+				{% for rightElement in carDetail.rightElements %}
+					<div class="right-column__element">{{ rightElement }}</div>
+				{% endfor %}
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="wrapper">
+            <h1>{{ footer }}</h1>
+        </div>
+    </footer>
+</body>
+{% endblock %}

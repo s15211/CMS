@@ -1,0 +1,23 @@
+@media (max-width: 600px) {
+    .main {
+        width: 100%;
+    }
+    .article__lead,
+    .right-column {
+        display: none;
+    }
+    .main__header {
+        padding-bottom: 0;
+    }
+    .main__header,
+    .main__articles-item {
+        padding-left: 10px;
+    }
+    .nav {
+        width: calc(100% + 36px);
+        overflow-x: scroll;
+    }
+    .main__detail-wrapper {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,33 @@
+.detail__header {
+	margin: 20px 0;
+	font-size: 26px;
+}
+.detail__meta {
+	color: #666;
+	margin: 20px 0;
+	font-size: 14px;
+}
+.detail__author {
+	margin-bottom: 6px;
+}
+.detail__lead {
+	margin: 20px 0;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+	line-height: 1.4;
+}
+.detail__image {
+	margin: 20px 0;
+}
+.detail__image img{
+	width: 100%;
+}
+.detail__paragraph {
+	margin: 12px;
+    font-size: 18px;
+    line-height: 32px;
+    word-break: break-word;
+	padding: 6px 0;
+	color: #333;
+}
