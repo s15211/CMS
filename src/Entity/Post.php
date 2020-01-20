@@ -26,11 +26,7 @@ class Post
      */
     private $Content;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Car", inversedBy="posts")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $car;
+
 
     /**
      * @ORM\Column(type="date")
@@ -42,6 +38,12 @@ class Post
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Car", inversedBy="posts")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $car;
 
     public function getId(): ?int
     {
@@ -71,18 +73,7 @@ class Post
 
         return $this;
     }
-
-    public function getCar(): ?Car
-    {
-        return $this->car;
-    }
-
-    public function setCar(?Car $car): self
-    {
-        $this->car = $car;
-
-        return $this;
-    }
+    
 
     public function getDate(): ?\DateTimeInterface
     {
@@ -106,5 +97,21 @@ class Post
         $this->user = $user;
 
         return $this;
+    }
+
+    public function getCar(): ?Car
+    {
+        return $this->car;
+    }
+
+    public function setCar(?Car $car): self
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->title;
     }
 }

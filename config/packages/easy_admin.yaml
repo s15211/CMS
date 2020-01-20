@@ -2,7 +2,6 @@ easy_admin:
     design:
         menu:
             - {label: "Entities"}
-
             - label: "Users"
               children:
                 - {entity: User, label: "Users list", icon: "user"}
@@ -15,6 +14,9 @@ easy_admin:
               children:
                 - {entity: Car, label: "Cars list", icon: "car"}
                 - {entity: Car, label: "Add car", icon: "plus", params: {action: 'new'}}
+            - BodyType
+            - EngineSize
+            - Mark
     site_name: 'Admin Panel'
     user:
         display_name: true
@@ -29,7 +31,7 @@ easy_admin:
             fields:
             - {type: 'group', icon: 'pencil', label: 'Basic Information', css_class: 'col-lg-8'}
             - Title
-            - {property: 'content', type: 'text_editor'}
+            - {property: 'Content', type: 'text_editor'}
             - date
             - {type: 'group', icon: 'th-list', label: 'Other Information', css_class: 'col-lg-4'}
             - car
@@ -42,7 +44,7 @@ easy_admin:
           show:
             fields:
               - Title
-              - {property: 'content', type: 'raw'}
+              - {property: 'Content', type: 'raw'}
               - Date
               - Car
               - User
@@ -55,4 +57,40 @@ easy_admin:
             filters: ['username','email']
         Car:
           class: App\Entity\Car
+          list:
+            collapse_actions: true
+            actions: ['show','edit','delete']
+            batch_actions: ['delete']
+            filters: ['name','year','mark']
+          label: "Car"
+        BodyType:
+          class: App\Entity\BodyType
+          list:
+            collapse_actions: true
+            actions: ['show','edit','delete']
+            batch_actions: ['delete']
+            filters: ['name']
+          show:
+            fields:
+              - Name
+        EngineSize:
+          class: App\Entity\EngineSize
+          list:
+            collapse_actions: true
+            actions: ['show','edit','delete']
+            batch_actions: ['delete']
+            filters: ['name']
+          show:
+            fields:
+              - Name
+        Mark:
+          class: App\Entity\Mark
+          list:
+            collapse_actions: true
+            actions: ['show','edit','delete']
+            batch_actions: ['delete']
+            filters: ['name']
+          show:
+            fields:
+              - Name
 
