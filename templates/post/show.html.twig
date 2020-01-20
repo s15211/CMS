@@ -1,0 +1,38 @@
+
+    <h1>Post</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ post.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ post.title }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ post.Content }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ post.date ? post.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Thumbnail</th>
+                <td>{{ post.thumbnail }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('post_index') }}">back to list</a>
+
+    <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
+
+    {{ include('post/_delete_form.html.twig') }}
+

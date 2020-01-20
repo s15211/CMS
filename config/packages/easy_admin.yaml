@@ -2,22 +2,24 @@ easy_admin:
     design:
         menu:
             - {label: "Entities"}
-            - label: "Users"
-              children:
-                - {entity: User, label: "Users list", icon: "user"}
-                - {entity: User, label: "Add user", icon: "plus", params: {action: 'new'}}
             - label: "Posts"
               children:
                 - {entity: Post, label: "Posts list", icon: "th-list"}
                 - {entity: Post, label: "Add post", icon: "plus", params: {action: 'new'}}
-            - label: "Cars"
-              children:
-                - {entity: Car, label: "Cars list", icon: "car"}
-                - {entity: Car, label: "Add car", icon: "plus", params: {action: 'new'}}
-            - BodyType
-            - EngineSize
-            - Mark
-    site_name: 'Admin Panel'
+            - {label: "Admin Panel" , permission: 'ROLE_ADMIN'}
+            - {label: "Users", permission: 'ROLE_ADMIN'}
+            - {entity: User, label: "Users list", icon: "user", permission: 'ROLE_ADMIN'}
+            - {entity: User, label: "Add user", icon: "plus", params: {action: 'new'}, permission: 'ROLE_ADMIN'}
+            - {label: "Cars", permission: 'ROLE_ADMIN'}
+            - {entity: Car, label: "Cars list", icon: "car", permission: 'ROLE_ADMIN'}
+            - {entity: Car, label: "Add car", icon: "plus", params: {action: 'new'}, permission: 'ROLE_ADMIN'}
+            - {label: "BodyTypes", permission: 'ROLE_ADMIN'}
+            - {entity: BodyType, label: "Boty Types list", icon: "car", permission: 'ROLE_ADMIN'}
+            - {label: "EngineSizes", permission: 'ROLE_ADMIN'}
+            - {entity: EngineSize, label: "Engines list", icon: "car", permission: 'ROLE_ADMIN'}
+            - {label: "Marks", permission: 'ROLE_ADMIN'}
+            - {entity: Mark, label: "Marks list", icon: "car", permission: 'ROLE_ADMIN'}
+    site_name: 'Driving Network'
     user:
         display_name: true
         display_avatar: true
@@ -44,14 +46,7 @@ easy_admin:
             batch_actions: ['delete']
             fields: ['title', 'content', 'date','Car','User',{property: 'thumbnail', type: 'image' , base_path: '%uploads_path%'}]
             filters: ['date']
-          show:
-            fields:
-              - Title
-              - {property: 'Content', type: 'raw'}
-              - Date
-              - Car
-              - User
-              - {property: 'thumbnail', type: 'image', base_path: '%uploads_path%'}
+            item_permission: 'ROLE_USER'
         User:
           class: App\Entity\User
           list:
@@ -59,6 +54,9 @@ easy_admin:
             actions: ['show','edit','delete']
             batch_actions: ['delete']
             filters: ['username','email']
+            item_permission: 'ROLE_ADMIN'
+          new:
+            item_permission: 'ROLE_ADMIN'
         Car:
           class: App\Entity\Car
           list:
@@ -66,7 +64,10 @@ easy_admin:
             actions: ['show','edit','delete']
             batch_actions: ['delete']
             filters: ['name','year','mark']
+            item_permission: 'ROLE_ADMIN'
           label: "Car"
+          new:
+            item_permission: 'ROLE_ADMIN'
         BodyType:
           class: App\Entity\BodyType
           list:
@@ -74,9 +75,12 @@ easy_admin:
             actions: ['show','edit','delete']
             batch_actions: ['delete']
             filters: ['name']
+            item_permission: 'ROLE_ADMIN'
           show:
             fields:
               - Name
+          new:
+            item_permission: 'ROLE_ADMIN'
         EngineSize:
           class: App\Entity\EngineSize
           list:
@@ -84,9 +88,12 @@ easy_admin:
             actions: ['show','edit','delete']
             batch_actions: ['delete']
             filters: ['name']
+            item_permission: 'ROLE_ADMIN'
           show:
             fields:
               - Name
+          new:
+            item_permission: 'ROLE_ADMIN'
         Mark:
           class: App\Entity\Mark
           list:
@@ -94,7 +101,10 @@ easy_admin:
             actions: ['show','edit','delete']
             batch_actions: ['delete']
             filters: ['name']
+            item_permission: 'ROLE_ADMIN'
           show:
             fields:
               - Name
+          new:
+            item_permission: 'ROLE_ADMIN'
 

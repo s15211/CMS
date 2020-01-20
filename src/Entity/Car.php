@@ -130,7 +130,7 @@ class Car
 
     public function __toString(): string
     {
-        return $this->name;
+        return $this->mark->getName() . ' ' . $this->name;
     }
 
     /**
