@@ -36,10 +36,13 @@ easy_admin:
             - {type: 'group', icon: 'th-list', label: 'Other Information', css_class: 'col-lg-4'}
             - car
             - user
+            -  {type: 'group', icon: 'clip', label: 'Attachments', css_class: 'col-lg-4'}
+            - { property: 'thumbnailFile', type: 'vich_image' }
           list:
             collapse_actions: true
             actions: ['show','edit','delete']
             batch_actions: ['delete']
+            fields: ['title', 'content', 'date','Car','User',{property: 'thumbnail', type: 'image' , base_path: '%uploads_path%'}]
             filters: ['date']
           show:
             fields:
@@ -48,6 +51,7 @@ easy_admin:
               - Date
               - Car
               - User
+              - {property: 'thumbnail', type: 'image', base_path: '%uploads_path%'}
         User:
           class: App\Entity\User
           list:

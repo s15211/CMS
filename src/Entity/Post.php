@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
+ * @Vich\Uploadable()
  */
 class Post
 {
@@ -27,7 +29,11 @@ class Post
     private $Content;
 
 
-
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+    
     /**
      * @ORM\Column(type="date")
      */
@@ -44,6 +50,35 @@ class Post
      * @ORM\JoinColumn(nullable=false)
      */
     private $car;
+
+    /**
+     * @ORM\Column(type="string", length=200)
+     */
+    private $thumbnail;
+
+    /**
+     * @Vich\UploadableField(mapping="post_iamge", fileNameProperty="thumbnail")
+     */
+    private $thumbnailFile;
+
+    /**
+     * @return mixed
+     */
+    public function getThumbnailFile()
+    {
+        return $this->thumbnailFile;
+    }
+
+    /**
+     * @param mixed $thumbnailFile
+     */
+    public function setThumbnailFile($thumbnailFile): void
+    {
+        $this->thumbnailFile = $thumbnailFile;
+        if($thumbnailFile){
+            $this->updatedAt = new \DateTime();
+        }
+    }
 
     public function getId(): ?int
     {
@@ -113,5 +148,32 @@ class Post
     public function __toString(): string
     {
         return $this->title;
+    }
+
+    public function getThumbnail(): ?string
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail(?string $thumbnail): self
+    {
+        $this->thumbnail = $thumbnail;
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+    public function __constreuct()
+    {
+        $this->updatedAt = new \DateTime();
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }
