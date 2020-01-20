@@ -1,0 +1,33 @@
+.post__main {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+section h1 {
+    text-align: center;
+    margin: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+form label {
+    font-size: 20px;
+    margin-top: 20px;
+}
+form input {
+    width: 40%;
+    margin: 5px auto;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+}
+form textarea {
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 18px;
+} 
