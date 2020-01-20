@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Newsletter;
 use App\Form\NewsletterFormType;
+use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,6 +38,7 @@ class ArticleController extends AbstractController
             $news = null;
         }
 
+
         $form = $this->createForm(NewsletterFormType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
@@ -58,6 +60,15 @@ class ArticleController extends AbstractController
         $body = $this->askApi('body_types');
         $engine = $this->askApi('engine_sizes');
 
+        $search = $this->createForm(SearchType::class);
+        $search->handleRequest($request);
+        if($search->isSubmitted() && $search->isValid())
+        {
+            $data = $search->getData();
+            return $this->redirectToRoute('app_search',['name' => $data['srchText'], 'mark' => $data['mark'], 'body' => $data['bodyType'], 'engine' => $data['engineSize']]);
+        }
+
+
         return  $this->render('article/index.html.twig',[
             'marks' => $marks,
             'bodies' => $body,
@@ -66,6 +77,7 @@ class ArticleController extends AbstractController
             'email' => $email,
             'news' => $news,
             'newsForm' => $form->createView(),
+            'searchForm' => $search->createView(),
         ]);
     }
 
@@ -77,6 +89,16 @@ class ArticleController extends AbstractController
         return $this->render('article/show.html.twig', [
         'tittle' => ucwords(str_replace('-',' ',$id)),
     ]);
+    }
+
+    /**
+     * @Route("/articles/{name}/{mark}/{body}/{engine}", name="app_search")
+     */
+    public function search($name,$mark,$body,$engine)
+    {
+        dd($name,$mark,$body,$engine);
+        return $this->render('article/carsList.html.twig', [
+        ]);
     }
 
     public function askApi($table)
