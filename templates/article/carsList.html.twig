@@ -4,7 +4,6 @@
 Jeśli masz problemy z tym artykułem w postaci twig, możesz zobaczyć kod HTML tutaj: 
 https://github.com/shkredo/CMS
 https://shkredo.github.io/CMS/detail.html
-następnym razem opisz bardziej szczegółowo strukturę bazy :)
 #}
 
 {% block head %}
@@ -18,46 +17,30 @@ następnym razem opisz bardziej szczegółowo strukturę bazy :)
 	<link rel="stylesheet" href="css/reset.css">
 {% endblock %}
 
-{% block body %}
-    <header>
-        <div class="wrapper">
-            <div class="logo">
-                <h1>
-                    <a href="/">{{ logo }}</a>
-                </h1>
-            </div>
-            <div class="nav">
-                <div class="navigation__element"><a href="list.html">{{ List }}</a></div>
-                <div class="navigation__element"><a href="">{{ link 2 }}</a></div>
-                <div class="navigation__element"><a href="">{{ link 3 }}</a></div>
-                <div class="navigation__element"><a href="">{{ link 4 }}</a></div>
-                <div class="navigation__element"><a href="">{{ link 5 }}</a></div>
-            </div>
-        </div>
-    </header>
+{% block content %}
     <section>
         <div class="wrapper columns">
             <div class="main">
-                <h1 class="main__header">{{ header }}</h1>
+                <h1 class="main__header">header</h1>
                 <div class="main__articles-wrapper">
                     <ul class="main__articles-list">
-						{% for car in cars %}
+						{% for _post in post %}
 							<li class="main__articles-item">
 								<div class="main__single-article">
-									<a href="detail.html" class="article__link"> <img src={{ car.image }} alt=""></a>
+									<a href="detail.html" class="article__link"> <img src={{ _post.image }} alt=""></a>
 									<article class="article">
 										<h2 class="article__title">
-											{{ car.title }}
+											{{ _post.title }}
 										</h2>
 										<p class="article__lead">
-											{{ car.lead }}
+											{{ _post.lead }}
 										</p>
 										<div class="artile__meta">
 											<div class="article__author">
-											   {{ car.author }}
+											   {{ _post.username }}
 											</div>
 											<div class="article__date">
-												{{ car.date }}
+												{{ _post.date }}
 											</div>
 										</div>
 									</article>
@@ -68,27 +51,22 @@ następnym razem opisz bardziej szczegółowo strukturę bazy :)
                 </div>
             <div class="pagination">
                 <ul class="pagination__list">
-                    <li class="pagination__element pagination__current"> <span>{{ 1 }}</span></li>
-                    <li class="pagination__element"><a href="">{{ 2 }}</a></li>
-                    <li class="pagination__element"><a href="">{{ 3 }}</a></li>
-                    <li class="pagination__element"><a href="">{{ 4 }}</a></li>
-                    <li class="pagination__element"><a href="">{{ 5 }}</a></li>
-                    <li class="pagination__element"><a href="">{{ 6 }}</a></li>
+                    <li class="pagination__element pagination__current"> <span>1</span></li>
+                    <li class="pagination__element"><a href="">2</a></li>
+                    <li class="pagination__element"><a href="">3</a></li>
+                    <li class="pagination__element"><a href="">4</a></li>
+                    <li class="pagination__element"><a href="">5</a></li>
+                    <li class="pagination__element"><a href="">6</a></li>
                 </ul>
             </div>
             </div>
             <div class="right-column">
-                <h1 class="main__header">{{ rightHeaderColumn }}</h1>
-				{% for rightElement in carDetail.rightElements %}
+                <h1 class="main__header">rightHeaderColumn</h1>
+				{% for rightElement in post.thumbnail %}
 					<div class="right-column__element">{{ rightElement }}</div>
 				{% endfor %}
             </div>
         </div>
     </section>
-    <footer class="footer">
-        <div class="wrapper">
-            <h1>{{ footer }}</h1>
-        </div>
-    </footer>
 </body>
 {% endblock %}
