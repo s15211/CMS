@@ -12,6 +12,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -40,9 +42,12 @@ class User implements UserInterface
     private $posts;
 
     /**
+     * @var string The hashed password
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    protected $isAdmin;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Newsletter", mappedBy="user", cascade={"persist", "remove"})
@@ -57,6 +62,27 @@ class User implements UserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function hasRole()
+    {
+        return in_array("ROLE_ADMIN",$this->roles);
+    }
+
+    public function getHasRoleAdmin(){
+        return $this->isAdmin;
+    }
+
+    public function setHasRoleAdmin($isAdmin)
+    {
+        if (true == $isAdmin && false == $this->hasRole('ROLE_ADMIN')) {
+            //array_push($this->roles, 'ROLE_ADMIN');
+            $this->setRoles(['ROLE_ADMIN']);
+        }
+        if (false == $isAdmin && true == $this->hasRole('ROLE_ADMIN')) {
+            $this->setRoles(['ROLE_USER']);
+        }
+        $this->isAdmin = $isAdmin;
     }
 
     /**
@@ -165,8 +191,8 @@ class User implements UserInterface
 
     public function setPassword(string $password): self
     {
-        $this->password = $password;
-
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $this->password=$hash;
         return $this;
     }
 
