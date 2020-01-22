@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Car;
 use App\Entity\Newsletter;
+use App\Entity\Post;
 use App\Form\NewsletterFormType;
 use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -86,17 +88,42 @@ class ArticleController extends AbstractController
      */
     public function article($id)
     {
-        return $this->render('article/show.html.twig', [
-        'tittle' => ucwords(str_replace('-',' ',$id)),
+        $post = $this->getDoctrine()
+            ->getRepository(Post::class)
+            ->find($id);
+
+
+        return $this->render('article/carDetail.html.twig', [
+            'title' => $post->getTitle(),
+            'username' => $post->getUser(),
+            'date' => $post->getDate(),
+            'lead' => $post->getCar()->GetName(),
+            'image' => $post->getThumbnailFile(),
+            'content' => $post->getContent()
     ]);
+    }
+
+    /**
+     * @Route("/{table}/{id}", name="app_quick")
+     */
+    public function quick($table,$id)
+    {
+        dd($table,$id);
+        return $this->json(['ok']);
     }
 
     /**
      * @Route("/articles/{name}/{mark}/{body}/{engine}", name="app_search")
      */
-    public function search($name,$mark,$body,$engine)
+    public function search($name,$mark,$body,$engine,EntityManagerInterface $em)
     {
-        dd($name,$mark,$body,$engine);
+        //dd($name,$mark,$body,$engine);
+        $repoCar = $em->getRepository(Car::class);
+        $cars = $repoCar->findByExampleField($name,$mark,$body,$engine);
+        $repoPost = $em->getRepository(Post::class);
+        $posts = $repoPost->findByExampleField($cars);
+        dd($posts);
+
         return $this->render('article/carsList.html.twig', [
         ]);
     }

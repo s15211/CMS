@@ -19,22 +19,98 @@ class CarRepository extends ServiceEntityRepository
         parent::__construct($registry, Car::class);
     }
 
-    // /**
-    //  * @return Car[] Returns an array of Car objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByExampleField($name,$mark,$body,$engine)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        if($mark != 0 && $body != 0 && $engine!=0)
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere("c.name LIKE :name")
+                ->setParameter('name', '%'.$name.'%')
+                ->andWhere("c.mark = :mark")
+                ->setParameter('mark', $mark)
+                ->andWhere("c.bodyType = :body")
+                ->setParameter('body', $body)
+                ->andWhere("c.engineSize = :eng")
+                ->setParameter('eng', $engine)
+                ->orderBy('c.id', 'ASC')
+                ->getQuery()
+                ->getResult()
+                ;
+        }
+        else if($mark != 0 && $body != 0)
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere("c.name LIKE :name")
+                ->setParameter('name', '%'.$name.'%')
+                ->andWhere("c.mark = :mark")
+                ->setParameter('mark', $mark)
+                ->andWhere("c.bodyType = :body")
+                ->setParameter('body', $body)
+                ->getQuery()
+                ->getResult()
+                ;
+        }else if($mark !=0 && $engine!= 0)
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere("c.name LIKE :name")
+                ->setParameter('name', '%'.$name.'%')
+                ->andWhere("c.mark = :mark")
+                ->setParameter('mark', $mark)
+                ->andWhere("c.engineSize = :eng")
+                ->setParameter('eng', $engine)
+                ->orderBy('c.id', 'ASC')
+                ->getQuery()
+                ->getResult()
+                ;
+        }
+        else if($body != 0 && $engine != 0)
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere("c.name LIKE :name")
+                ->setParameter('name', '%'.$name.'%')
+                ->andWhere("c.bodyType = :body")
+                ->setParameter('body', $body)
+                ->andWhere("c.engineSize = :eng")
+                ->setParameter('eng', $engine)
+                ->orderBy('c.id', 'ASC')
+                ->getQuery()
+                ->getResult()
+                ;
+        }
+        else if($mark != 0)
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere("c.name LIKE :name")
+                ->andWhere("c.mark = :mark")
+                ->setParameter('name', '%'.$name.'%')
+                ->setParameter('mark', $mark)
+                ->getQuery()
+                ->getResult()
+                ;
+        }
+        else if($body != 0)
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere("c.name LIKE :name")
+                ->setParameter('name', '%'.$name.'%')
+                ->andWhere("c.bodyType = :body")
+                ->setParameter('body', $body)
+                ->getQuery()
+                ->getResult()
+                ;
+        }
+        else if($engine != 0)
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere("c.name LIKE :name")
+                ->setParameter('name', '%'.$name.'%')
+                ->andWhere("c.engineSize = :engine")
+                ->setParameter('engine', $engine)
+                ->getQuery()
+                ->getResult()
+                ;
+        }
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Car
