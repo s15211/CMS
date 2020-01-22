@@ -149,10 +149,7 @@
 	<ul class="nav nav-tabs navbar-left latest-navleft">
 		<li role="presentation" class="li-sortby"><span class="sortby">SORT BY: </span></li>
 		<li data-filter=".RECENT" role="presentation"><a href="#mostrecent" class="prcBtnR">MOST RECENT </a></li>
-		<li data-filter=".POPULAR" role="presentation"><a href="#mostpopular" class="prcBtnR">MOST POPULAR </a></li>
 		<li  role="presentation"><a href="#" class="alphSort">ALPHABETICAL </a></li>
-		<li data-filter=".HPRICE" role="presentation"><a href="#" class="prcBtnH">HIGHEST PRICE </a></li>
-		<li data-filter=".LPRICE" role="presentation"><a href="#" class="prcBtnL">LOWEST  PRICE </a></li>
 		<li id="hideonmobile">
 	</ul>
 </div>
@@ -163,7 +160,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/car1.jpg" alt="car1">
+					<img src="{{ '/image/' ~ image1 }}" >
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -171,27 +168,15 @@
 								<div class="glyphicon glyphicon-star"></div>
 							</div>
 							<div class="simpletxt">
-								<h3 class="name">Rolls Royce</h3>
-								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
-	 							sed do eiusmod tempor incididunt" </p>
-	 							<h4 class="price"> 1000&euro;</h4>
+								<h3 class="name">{{ name1 }}</h3>
 	 							<button>READ MORE</button><br>
-	 							<div class="wishtxt">
-		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
-		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
-		 						</div>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
 							</div>
 						</div>
 				</div>	 
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 ">
 				<div class="txthover">
-					<img src="image/car2.jpg" alt="car2">
+					<img src="{{ '/image/' ~ image2 }}" >
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -199,27 +184,15 @@
 								<div class="glyphicon glyphicon-star"></div>
 							</div>
 							<div class="simpletxt">
-								<h3 class="name">Renault</h3>
-								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
-	 							sed do eiusmod tempor incididunt" </p>
-	 							<h4 class="price">900 &euro;</h4>
+								<h3 class="name">{{ name2 }}</h3>
 	 							<button>READ MORE</button><br>
-	 							<div class="wishtxt">
-		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
-		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
-		 						</div>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
 							</div>
 						</div>
 				</div>	 
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/car3.jpg" alt="car3">
+					<img src="{{ '/image/' ~ image3 }}" >
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -227,27 +200,15 @@
 								<div class="glyphicon glyphicon-star"></div>
 							</div>
 							<div class="simpletxt">
-								<h3 class="name">Ford Mustang</h3>
-								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
-	 							sed do eiusmod tempor incididunt" </p>
-	 							<h4 class="price">3000 &euro;</h4>
+								<h3 class="name">{{ name3 }}</h3>
 	 							<button>READ MORE</button><br>
-	 							<div class="wishtxt">
-		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
-		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
-		 						</div>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
 							</div>
 						</div>
 				</div>	 
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/car4.jpg" alt="car4">
+					<img src="{{ '/image/' ~ image4 }}">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -255,27 +216,15 @@
 								<div class="glyphicon glyphicon-star"></div>
 							</div>
 							<div class="simpletxt">
-								<h3 class="name">Rover</h3>
-								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
-	 							sed do eiusmod tempor incididunt" </p>
-	 							<h4 class="price">1000 &euro;</h4>
+								<h3 class="name">{{ name4 }}</h3>
 	 							<button>READ MORE</button><br>
-	 							<div class="wishtxt">
-		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
-		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
-		 						</div>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
 							</div>
 						</div>
 				</div>	 
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/car5.jpg" alt="car5">
+					<img src="{{ '/image/' ~ image5 }}">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -283,27 +232,15 @@
 								<div class="glyphicon glyphicon-star"></div>
 							</div>
 							<div class="simpletxt">
-								<h3 class="name">Porche</h3>
-								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
-	 							sed do eiusmod tempor incididunt" </p>
-	 							<h4 class="price">1200 &euro;</h4>
+								<h3 class="name">{{ name5 }}</h3>
 	 							<button>READ MORE</button><br>
-	 							<div class="wishtxt">
-		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
-		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
-		 						</div>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
 							</div>
 						</div>
 				</div>	 
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/car6.jpg" alt="car6">
+					<img src="{{ '/image/' ~ image6 }}">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -311,27 +248,15 @@
 								<div class="glyphicon glyphicon-star"></div>
 							</div>
 							<div class="simpletxt">
-								<h3 class="name">Porche 911</h3>
-								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
-	 							sed do eiusmod tempor incididunt" </p>
-	 							<h4 class="price">4000 &euro;</h4>
+								<h3 class="name">{{ name6 }}</h3>
 	 							<button>READ MORE</button><br>
-	 							<div class="wishtxt">
-		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
-		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
-		 						</div>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
 							</div>
 						</div>
 				</div>	 
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/car7.jpg" alt="car7">
+					<img src="{{ '/image/' ~ image7 }}">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -339,27 +264,15 @@
 								<div class="glyphicon glyphicon-star"></div>
 							</div>
 							<div class="simpletxt">
-								<h3 class="name">Chevrolet SS</h3>
-								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
-	 							sed do eiusmod tempor incididunt" </p>
-	 							<h4 class="price">3000 &euro;</h4>
+								<h3 class="name">{{ name7 }}</h3>
 	 							<button>READ MORE</button><br>
-	 							<div class="wishtxt">
-		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
-		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
-		 						</div>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
 							</div>
 						</div>
 				</div>	 
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 				<div class="txthover">
-					<img src="image/car8.jpg" alt="car8">
+					<img src="{{ '/image/' ~ image8 }}">
 						<div class="txtcontent">
 							<div class="stars">
 								<div class="glyphicon glyphicon-star"></div>
@@ -367,20 +280,8 @@
 								<div class="glyphicon glyphicon-star"></div>
 							</div>
 							<div class="simpletxt">
-								<h3 class="name">Meclaren</h3>
-								<p>"Lorem ipsum dolor sit amet, consectetur,<br>
-	 							sed do eiusmod tempor incididunt" </p>
-	 							<h4 class="price">2500 &euro;</h4>
+								<h3 class="name">{{ name8 }}</h3>
 	 							<button>READ MORE</button><br>
-	 							<div class="wishtxt">
-		 							<p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
-		 							<p class="paragraph2">Compare <span class="icon"><img src="image/compicon.png" alt="compicon"></span></p>
-		 						</div>
-							</div>
-							<div class="stars2">
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
-								<div class="glyphicon glyphicon-star"></div>
 							</div>
 						</div>
 				</div>	 

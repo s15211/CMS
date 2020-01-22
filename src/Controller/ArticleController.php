@@ -53,6 +53,21 @@ class ArticleController extends AbstractController
         $post3 = $this->getDoctrine()
             ->getRepository(Post::class)->find($posts[2]->getId());
 
+        $post4 = $this->getDoctrine()
+            ->getRepository(Post::class)->find($posts[3]->getId());
+
+        $post5 = $this->getDoctrine()
+            ->getRepository(Post::class)->find($posts[4]->getId());
+
+        $post6 = $this->getDoctrine()
+            ->getRepository(Post::class)->find($posts[5]->getId());
+
+        $post7 = $this->getDoctrine()
+            ->getRepository(Post::class)->find($posts[6]->getId());
+
+        $post8 = $this->getDoctrine()
+            ->getRepository(Post::class)->find($posts[7]->getId());
+
         $form = $this->createForm(NewsletterFormType::class);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
@@ -94,6 +109,16 @@ class ArticleController extends AbstractController
             'title2' => $post2->getTitle(),
             'image3' => $post3->getThumbnail(),
             'name3' => $post3->getCar(),
+            'name4' => $post4->getCar(),
+            'name5' => $post5->getCar(),
+            'name6' => $post6->getCar(),
+            'name7' => $post7->getCar(),
+            'name8' => $post8->getCar(),
+            'image4' => $post4->getThumbnail(),
+            'image5' => $post5->getThumbnail(),
+            'image6' => $post6->getThumbnail(),
+            'image7' => $post7->getThumbnail(),
+            'image8' => $post8->getThumbnail(),
             'marks' => $marks,
             'bodies' => $body,
             'engines' => $engine,
