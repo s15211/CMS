@@ -16,35 +16,22 @@
 	<div id="carousel-up" class="carousel slide" data-ride="carousel">
 		<div class="carousel-inner " role="listbox">
 			<div class="item active">
-				<img src="image/oldcar.jpg" alt="oldcar">
+				<img src="{{ '/image/' ~ image1 }}">
 				<div class="carousel-caption">
-					<h2>Porsche 356</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur ,<br>
-						sed do eiusmod tempor incididunt ut labore </p>
+					<h2>{{ name1 }}</h2>
 				</div>
 			</div>
 			<div class="item">
-				<img src="image/porche.jpg" alt="porche">
+				<img src="{{ '/image/' ~ image2 }}">
 				<div class="carousel-caption">
-					<h2>Porche</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur ,<br>
-						sed do eiusmod tempor incididunt ut labore </p>
+					<h2>{{ name2 }}</h2>
+
 				</div>
 			</div>
 			<div class="item">
-				<img src="image/logo.jpg" alt="Ferrari">
+				<img src="{{ '/image/' ~ image3 }}">
 				<div class="carousel-caption">
-					<h2>Ferrari</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur ,<br>
-						sed do eiusmod tempor incididunt ut labore </p>
-				</div>
-			</div>
-			<div class="item">
-				<img src="image/benz.jpg" alt="benz">
-				<div class="carousel-caption">
-					<h2>Car</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur ,<br>
-						sed do eiusmod tempor incididunt ut labore </p>
+					<h2>{{ name3 }}</h2>
 				</div>
 			</div>
 		</div>
@@ -120,32 +107,21 @@
 <!-- ____________________Featured Section ______________________________--> 
 <div class="allcontain">
 	<div class="feturedsection">
-		<h1 class="text-center"><span class="bdots">&bullet;</span>F E A T U R E S<span class="carstxt">C A R S</span>&bullet;</h1>
+		<h1 class="text-center"><span class="bdots">&bullet;</span>L A T E S T<span class="carstxt">A R T I C L E S</span>&bullet;</h1>
 	</div>
 	<div class="feturedimage">
 		<div class="row firstrow">
 			<div class="col-lg-6 costumcol colborder1">
 				<div class="row costumrow">
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 img1colon">
-						<img src="image/featurporch.jpg" alt="porsche">
+						<img src="{{ '/image/' ~ image1 }}" height="350" width="350">
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 txt1colon ">
 						<div class="featurecontant">
-							<h1>LOREM IPSUM</h1>
-							<p>"Lorem ipsum dolor sit amet, consectetur ,<br>
-			 						sed do eiusmod tempor incididunt </p>
-			 				<h2>Price &euro;</h2>
+							<h1>{{ name1 }}</h1>
+							<p>{{ title1 }} </p>
+			 				<h2>{{ user1 }}</h2>
 			 				<button id="btnRM" onclick="rmtxt()">READ MORE</button>
-			 				<div id="readmore">
-			 						<h1>Car Name</h1>
-			 						<p>"Lorem ipsum dolor sit amet, consectetur ,<br>
-			 						sed do eiusmod tempor incididunt <br>"Lorem ipsum dolor sit amet, consectetur ,<br>
-			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1 ,
-			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1
-			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1<br>
-			 						</p>
-			 						<button id="btnRL">READ LESS</button>
-			 				</div>
 						</div>
 					</div>
 				</div>
@@ -153,24 +129,14 @@
 			<div class="col-lg-6 costumcol colborder2">
 				<div class="row costumrow">
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 img2colon">
-						<img src="image/featurporch1.jpg" alt="porsche1">
+						<img src="{{ '/image/' ~ image2 }}" height="350" width="350">
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 txt1colon ">
 						<div class="featurecontant">
-							<h1>LOREM IPSUM</h1>
-							<p>"Lorem ipsum dolor sit amet, consectetur ,<br>
-			 						sed do eiusmod tempor incididunt </p>
-			 				<h2>Price &euro;</h2>
+							<h1>{{ name2 }}</h1>
+							<p>{{ title2 }} </p>
+							<h2>{{ user2 }}</h2>
 			 				<button id="btnRM2">READ MORE</button>
-			 				<div id="readmore2">
-			 						<h1>Car Name</h1>
-			 						<p>"Lorem ipsum dolor sit amet, consectetur ,<br>
-			 						sed do eiusmod tempor incididunt <br>"Lorem ipsum dolor sit amet, consectetur ,<br>
-			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1 ,
-			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1
-			 						sed do eiusmod tempor incididunt"Lorem ipsum dolor sit amet, consectetur1<br></p>
-			 						<button id="btnRL2">READ LESS</button>
-			 				</div>
 						</div>
 					</div>
 				</div>

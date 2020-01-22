@@ -40,6 +40,19 @@ class ArticleController extends AbstractController
             $news = null;
         }
 
+        $posts = $this->getDoctrine()
+            ->getRepository(Post::class)->findAll();
+
+        $counter = count($posts);
+
+        $post1 = $this->getDoctrine()
+            ->getRepository(Post::class)->find($counter);
+
+        $post2 = $this->getDoctrine()
+            ->getRepository(Post::class)->find($counter - 1);
+
+        $post3 = $this->getDoctrine()
+            ->getRepository(Post::class)->find(4);
 
         $form = $this->createForm(NewsletterFormType::class);
         $form->handleRequest($request);
@@ -72,6 +85,16 @@ class ArticleController extends AbstractController
 
 
         return  $this->render('article/index.html.twig',[
+            'name1' => $post1->getCar(),
+            'image1' => $post1->getThumbnail(),
+            'user1' => $post1->getUser(),
+            'title1' => $post1->getTitle(),
+            'name2' => $post2->getCar(),
+            'image2' => $post2->getThumbnail(),
+            'user2' => $post2->getUser(),
+            'title2' => $post2->getTitle(),
+            'image3' => $post3->getThumbnail(),
+            'name3' => $post3->getCar(),
             'marks' => $marks,
             'bodies' => $body,
             'engines' => $engine,
@@ -88,14 +111,32 @@ class ArticleController extends AbstractController
      */
     public function article($id)
     {
+        $user = $this->getUser();
+        if($user)
+        {
+            $last_username = $user->getUsername();
+            $email = $user->GetEmail();
+        }
+        else
+        {
+            $last_username = null;
+            $email = null;
+        }
+
         $post = $this->getDoctrine()
             ->getRepository(Post::class)
             ->find($id);
 
+        $marks = $this->askApi('marks');
+        $body = $this->askApi('body_types');
 
         return $this->render('article/carDetail.html.twig', [
             'title' => $post->getTitle(),
             'username' => $post->getUser(),
+            'marks' => $marks,
+            'bodies' => $body,
+            'last_username' => $last_username,
+            'email' => $email,
             'date' => $post->getDate(),
             'lead' => $post->getCar()->GetName(),
             'image' => $post->getThumbnailFile(),

@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\UserRegistrationFormType;
 use mysql_xdevapi\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -21,6 +22,8 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        $marks = $this->askApi('marks');
+        $body = $this->askApi('body_types');
 
         $form = $this->createForm(UserRegistrationFormType::class);
         $form->handleRequest($request);
@@ -30,6 +33,7 @@ class SecurityController extends AbstractController
             $user = $form->getData();
             dd($form->getData(),$user);
             $user->setPassword($passwordEncoder->encodePassword(
+
                 $user,
                 $form['password']->getData()
             ));
@@ -39,6 +43,8 @@ class SecurityController extends AbstractController
 
         return $this->render('security/index.html.twig', [
             'last_username' => $lastUsername,
+            'marks' => $marks,
+            'bodies' => $body,
             'error' => $error,
             'regForm' => $form->createView(),
         ]);
@@ -51,5 +57,14 @@ class SecurityController extends AbstractController
     public function logout()
     {
         throw new Exception('Logout failed. . .');
+    }
+    public function askApi($table)
+    {
+        $client = HttpClient::create();
+        $respone = $client->request('GET','http://localhost:8080/api/'.$table);
+        $body = $respone->getContent();
+        $data = json_decode($body,true);
+        $data = $data['hydra:member'];
+        return $data;
     }
 }
