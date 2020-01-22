@@ -41,18 +41,17 @@ class ArticleController extends AbstractController
         }
 
         $posts = $this->getDoctrine()
-            ->getRepository(Post::class)->findAll();
+            ->getRepository(Post::class)->findMaxId();
 
-        $counter = count($posts);
 
         $post1 = $this->getDoctrine()
-            ->getRepository(Post::class)->find($counter);
+            ->getRepository(Post::class)->find($posts[0]->getId());
 
         $post2 = $this->getDoctrine()
-            ->getRepository(Post::class)->find($counter - 1);
+            ->getRepository(Post::class)->find($posts[1]->getId());
 
         $post3 = $this->getDoctrine()
-            ->getRepository(Post::class)->find(4);
+            ->getRepository(Post::class)->find($posts[2]->getId());
 
         $form = $this->createForm(NewsletterFormType::class);
         $form->handleRequest($request);

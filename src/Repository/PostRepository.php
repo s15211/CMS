@@ -34,6 +34,17 @@ class PostRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    /**
+     * @return Post[]
+     */
+    public function findMaxId()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     /*
     public function findOneBySomeField($value): ?Post
     {
