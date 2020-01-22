@@ -165,7 +165,7 @@ class Post
     {
         return $this->updatedAt;
     }
-    public function __constreuct()
+    public function __construct()
     {
         $this->updatedAt = new \DateTime();
     }

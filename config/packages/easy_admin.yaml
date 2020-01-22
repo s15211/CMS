@@ -37,7 +37,11 @@ easy_admin:
             - date
             - {type: 'group', icon: 'th-list', label: 'Other Information', css_class: 'col-lg-4'}
             - car
-            - user
+            - property: 'user'
+              type: 'entity'
+              type_options:
+                expanded: false
+                multiple: false
             -  {type: 'group', icon: 'clip', label: 'Attachments', css_class: 'col-lg-4'}
             - { property: 'thumbnailFile', type: 'vich_image' }
           list:
@@ -49,6 +53,12 @@ easy_admin:
             item_permission: 'ROLE_USER'
         User:
           class: App\Entity\User
+          form:
+            fields:
+            - Username
+            - Email
+            - Password
+            - {property: 'hasRoleAdmin', label: 'Is admin', type: checkbox}
           list:
             collapse_actions: true
             actions: ['show','edit','delete']
