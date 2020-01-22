@@ -19,9 +19,6 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils,Request $request,UserPasswordEncoderInterface $passwordEncoder)
     {
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
-
         $marks = $this->askApi('marks');
         $body = $this->askApi('body_types');
 
@@ -29,6 +26,7 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
+            dd($form->getData());
             /** @var User $user */
             $user = $form->getData();
             dd($form->getData(),$user);
@@ -42,6 +40,12 @@ class SecurityController extends AbstractController
             $em->persist($user);
             $em->flush();
         }
+        else
+        {
+            $error = $authenticationUtils->getLastAuthenticationError();
+            $lastUsername = $authenticationUtils->getLastUsername();
+        }
+
 
 
         return $this->render('security/index.html.twig', [
@@ -50,6 +54,50 @@ class SecurityController extends AbstractController
             'bodies' => $body,
             'error' => $error,
             'regForm' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/register", name="app_register")
+     */
+    public function register(Request $request,UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $user = $this->getUser();
+        if($user)
+        {
+            $last_username = $user->getUsername();
+            $email = $user->GetEmail();
+        }
+        else
+        {
+            $last_username = null;
+            $email = null;
+        }
+        $form = $this->createForm(UserRegistrationFormType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            /** @var User $user */
+            $user = $form->getData();
+            $user->setPassword($passwordEncoder->encodePassword(
+                $user,
+                $form['password']->getData()
+            ));
+            $user->setRoles(['ROLE_USERS']);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('app_homepage');
+
+        return $this->render('security/index.html.twig', [
+            'last_username' => $last_username,
+            'error' => null,
+            'marks' => $this->askApi('marks'),
+            'bodies' => $this->askApi('body_types'),
+            'regForm' => $form->createView()
         ]);
     }
 

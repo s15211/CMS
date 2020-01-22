@@ -27,9 +27,16 @@
                     </div>
                 </div>
                 {{ form_start(regForm,{
-                    'class' : "form-detail",
-                    'method' : 'POST'
+                    'attr' :
+                    {
+                        'class' : "form-detail",
+                        'method' : 'POST',
+                        'action' : '/register'
+                    }
                 }) }}
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
                     <div class="tabcontent" id="sign-up">
                         <div class="form-row">
                             <label class="form-row-inner">
@@ -70,25 +77,12 @@
                                 <span class="border"></span>
                             </label>
                         </div>
-                        <div class="form-row">
-                            <label class="form-row-inner">
-                                {{ form_widget(regForm.password,
-                                    {	'attr' :
-                                        {
-                                            'class' : 'input-text',
-                                            'id' : 'password',
-                                        }
-                                    }) }}
-                                <span class="label">Comfirm Password</span>
-                                <span class="border"></span>
-                            </label>
-                        </div>
                         <div class="form-row-last">
-                            <input type="submit" name="register" class="register" value="Register">
+                            <input type="submit" action name="register" class="register" value="Register">
                         </div>
                     </div>
                 {{ form_end(regForm) }}
-                <form class="form-detail"  method="post">
+                <form name="login_form" class="form-detail"  method="post">
 
                     <input type="hidden" name="_csrf_token"
                            value="{{ csrf_token('authenticate') }}"

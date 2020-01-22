@@ -18,9 +18,9 @@ class UserRegistrationFormType extends AbstractType
         $builder
             ->add('username',null,array('label' => false))
             ->add('email' ,null,array('label' => false))
-            ->add('password',RepeatedType::class,[
+            ->add('password',PasswordType::class,[
+                'label' => false,
                 'mapped' => false,
-                'type' => PasswordType::class,
                 'required' => true,
                 'constraints' => [
                     new NotBlank([
@@ -31,8 +31,6 @@ class UserRegistrationFormType extends AbstractType
                         'minMessage' => 'Please enter password that contains at least 8 chars !'
                     ])
                 ],
-                'first_options' => array('label' => false),
-                'second_options' => array('label' => false)
             ])
         ;
     }
