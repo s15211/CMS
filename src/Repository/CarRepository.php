@@ -21,7 +21,27 @@ class CarRepository extends ServiceEntityRepository
 
     public function findByExampleField($name,$mark,$body,$engine)
     {
-        if($mark != 0 && $body != 0 && $engine!=0)
+        if($name == 0 && $mark!= 0)
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere("c.mark = :mark")
+                ->setParameter('mark', $mark)
+                ->orderBy('c.id', 'ASC')
+                ->getQuery()
+                ->getResult()
+                ;
+        }
+        else if($name == 0 && $body != 0)
+        {
+            return $this->createQueryBuilder('c')
+            ->andWhere("c.bodyType = :body")
+            ->setParameter('body', $body)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+        }
+        else if($mark != 0 && $body != 0 && $engine!=0)
         {
             return $this->createQueryBuilder('c')
                 ->andWhere("c.name LIKE :name")
@@ -49,7 +69,8 @@ class CarRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getResult()
                 ;
-        }else if($mark !=0 && $engine!= 0)
+        }
+        else if($mark !=0 && $engine!= 0)
         {
             return $this->createQueryBuilder('c')
                 ->andWhere("c.name LIKE :name")
@@ -110,17 +131,14 @@ class CarRepository extends ServiceEntityRepository
                 ->getResult()
                 ;
         }
-    }
-
-    /*
-    public function findOneBySomeField($value): ?Car
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
+        else
+        {
+            return $this->createQueryBuilder('c')
+            ->andWhere("c.name LIKE :name")
+            ->setParameter('name', '%'.$name.'%')
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
+        }
     }
-    */
 }

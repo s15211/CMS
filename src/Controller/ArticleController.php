@@ -171,10 +171,36 @@ class ArticleController extends AbstractController
     /**
      * @Route("/{table}/{id}", name="app_quick")
      */
-    public function quick($table,$id)
+    public function quick($table,$id,EntityManagerInterface $em)
     {
-        dd($table,$id);
-        return $this->json(['ok']);
+        $user = $this->getUser();
+        if($user)
+        {
+            $last_username = $user->getUsername();
+            $email = $user->GetEmail();
+        }
+        else
+        {
+            $last_username = null;
+            $email = null;
+        }
+        $repoCar = $em->getRepository(Car::class);
+        if($table == 'mark')
+            $cars = $repoCar->findByExampleField(0,$id,0,0);
+        else
+            $cars = $repoCar->findByExampleField(0,0,$id,0);
+
+
+        $repoPost = $em->getRepository(Post::class);
+        $posts = $repoPost->findByExampleField($cars);
+
+        return $this->render('article/carsList.html.twig', [
+            'marks' => $this->askApi('marks'),
+            'bodies' => $this->askApi('body_types'),
+            'last_username' => $last_username,
+            'email' => $email,
+            'post' => $posts,
+        ]);
     }
 
     /**
@@ -182,14 +208,31 @@ class ArticleController extends AbstractController
      */
     public function search($name,$mark,$body,$engine,EntityManagerInterface $em)
     {
-        //dd($name,$mark,$body,$engine);
+        $user = $this->getUser();
+        if($user)
+        {
+            $last_username = $user->getUsername();
+            $email = $user->GetEmail();
+        }
+        else
+        {
+            $last_username = null;
+            $email = null;
+        }
+
         $repoCar = $em->getRepository(Car::class);
         $cars = $repoCar->findByExampleField($name,$mark,$body,$engine);
+
         $repoPost = $em->getRepository(Post::class);
         $posts = $repoPost->findByExampleField($cars);
-        dd($posts);
+
 
         return $this->render('article/carsList.html.twig', [
+            'marks' => $this->askApi('marks'),
+            'bodies' => $this->askApi('body_types'),
+            'last_username' => $last_username,
+            'email' => $email,
+            'post' => $posts,
         ]);
     }
 

@@ -33,11 +33,14 @@ class SecurityController extends AbstractController
             $user = $form->getData();
             dd($form->getData(),$user);
             $user->setPassword($passwordEncoder->encodePassword(
-
                 $user,
                 $form['password']->getData()
             ));
             $user->setRoles(['ROLE_ADMIN']);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
         }
 
 

@@ -27,20 +27,20 @@ https://shkredo.github.io/CMS/detail.html
 						{% for _post in post %}
 							<li class="main__articles-item">
 								<div class="main__single-article">
-									<a href="detail.html" class="article__link"> <img src={{ _post.image }} alt=""></a>
+									<a href="detail.html" class="article__link"> <img src="image/{{ _post.thumbnail }}" alt=""></a>
 									<article class="article">
 										<h2 class="article__title">
 											{{ _post.title }}
 										</h2>
 										<p class="article__lead">
-											{{ _post.lead }}
+											{{ _post.car.name }}
 										</p>
 										<div class="artile__meta">
 											<div class="article__author">
-											   {{ _post.username }}
+											   {{ _post.user }}
 											</div>
 											<div class="article__date">
-												{{ _post.date }}
+												{{ _post.date | date("y-m-d")}}
 											</div>
 										</div>
 									</article>
