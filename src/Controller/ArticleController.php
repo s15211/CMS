@@ -120,6 +120,14 @@ class ArticleController extends AbstractController
             'image6' => $post6->getThumbnail(),
             'image7' => $post7->getThumbnail(),
             'image8' => $post8->getThumbnail(),
+            'id1' => $post1->getId(),
+            'id2' => $post2->getId(),
+            'id3' => $post3->getId(),
+            'id4' => $post4->getId(),
+            'id5' => $post5->getId(),
+            'id6' => $post6->getId(),
+            'id7' => $post7->getId(),
+            'id8' => $post8->getId(),
             'marks' => $marks,
             'bodies' => $body,
             'engines' => $engine,
@@ -164,7 +172,7 @@ class ArticleController extends AbstractController
             'email' => $email,
             'date' => $post->getDate(),
             'lead' => $post->getCar()->GetName(),
-            'image' => $post->getThumbnailFile(),
+            'image' => $post->getThumbnail(),
             'content' => $post->getContent()
     ]);
     }

@@ -27,7 +27,7 @@ https://shkredo.github.io/CMS/detail.html
 						{% for _post in post %}
 							<li class="main__articles-item">
 								<div class="main__single-article">
-									<a href="detail.html" class="article__link"> <img src="image/{{ _post.thumbnail }}" alt=""></a>
+									<a href="detail.html" class="article__link">  <img src="{{ '/image/' ~ _post.thumbnail }}"></a>
 									<article class="article">
 										<h2 class="article__title">
 											{{ _post.title }}
