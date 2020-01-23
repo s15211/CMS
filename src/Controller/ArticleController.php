@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Car;
 use App\Entity\Newsletter;
 use App\Entity\Post;
+use App\Form\ContactForm;
 use App\Form\NewsletterFormType;
 use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -236,6 +237,39 @@ class ArticleController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/contact", name="app_contact")
+     */
+    public function contact(Request $request,\Swift_Mailer $mailer)
+    {
+        $user = $this->getUser();
+        if($user)
+        {
+            $last_username = $user->getUsername();
+            $email = $user->GetEmail();
+        }
+        else
+        {
+            $last_username = null;
+            $email = null;
+        }
+
+        $form = $this->createForm(ContactForm::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $this->sendMail($form['email']->getData(),$form['subject']->getData(),$form['content']->getData(), $mailer);
+            $this->addFlash('success','Email send !');
+        }
+
+        return $this->render('article/contact.html.twig',[
+            'marks' => $this->askApi('marks'),
+            'bodies' => $this->askApi('body_types'),
+            'last_username' => $last_username,
+            'form' => $form->createView()
+        ]);
+    }
+
     public function askApi($table)
     {
         $client = HttpClient::create();
@@ -244,5 +278,22 @@ class ArticleController extends AbstractController
         $data = json_decode($body,true);
         $data = $data['hydra:member'];
         return $data;
+    }
+
+    public function sendMail($email,$subject,$content, \Swift_Mailer $mailer)
+    {
+
+        $message = (new \Swift_Message('Contact Us - Drive Network'))
+            ->setFrom('driven3twork@gmail.com')
+            ->setTo('driven3twork@gmail.com')
+            ->setBody($this->renderView(
+                'Email/contactUs.html.twig',[
+                    'email' => $email,
+                    'subject' => $subject,
+                    'content' => $content
+                ]
+            ));
+        $mailer->send($message);
+
     }
 }
